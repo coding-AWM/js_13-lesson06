@@ -1,31 +1,33 @@
 'use strict'
 
-let num0 = 58; //должно храниться в замыкании
+// let num0 = 58; //должно храниться в замыкании
 let isNumber = function (z) {
     return !isNaN(parseFloat(z)) && isFinite(z);
 }
-// let liv = 10;
+let liv = 10;
 
-function guessTheNumber() {
+function guessTheNumber(num) {
     // let num1 = +prompt('Угадай число от 1 до 100');  
     let num1 = prompt('Угадай число от 1 до 100');
+    // checkLiv();
+    let num0 = num;
 
     if (num1) {
         if (!isNumber(num1)) {
             alert('Это не число, снова повторите попытку');
-            guessTheNumber();
+            return guessTheNumber();
         }
 
         let num = parseInt(num1);
 
         if (num < num0) {
             alert('Число меньше загаданного');
-            guessTheNumber();
+            return guessTheNumber();
             // return
         }
         if (num > num0) {
             alert('Число больше загаданного');
-            guessTheNumber();
+            return guessTheNumber();;
             // return
         }
         if (num === num0) {
@@ -36,7 +38,19 @@ function guessTheNumber() {
         alert('Конец');
     }
 }
-guessTheNumber()
+guessTheNumber(52);
+
+// let checkLiv = function () {
+//     liv--;
+//     console.log('liv: ', liv);
+// }
+
+// let endGame = function () {
+//     alert('Игра окончена')
+// }
+
+// endGame();
+// checkLiv();
 
 
 // let a = prompt('вопрос');
