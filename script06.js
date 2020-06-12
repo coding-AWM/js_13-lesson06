@@ -1,61 +1,50 @@
 'use strict'
 
-// let num0 = 58; //должно храниться в замыкании
 let isNumber = function (z) {
     return !isNaN(parseFloat(z)) && isFinite(z);
 }
+
+let secret = function randomSelect() {    
+    return Math.floor(Math.random() * 100);
+}
+
+
 let liv = 10;
 
-function guessTheNumber(num) {
-    // let num1 = +prompt('Угадай число от 1 до 100');  
-    let num1 = prompt('Угадай число от 1 до 100');
-    // checkLiv();
-    let num0 = num;
+function guessTheNumber() {
+    
+    let secretNum = secret();  
+        
+    let ansverNum = function () {
+        let num1 = prompt('Угадай число от 1 до 100');
 
-    if (num1) {
-        if (!isNumber(num1)) {
-            alert('Это не число, снова повторите попытку');
-            return guessTheNumber();
-        }
+        if (num1) {
+            if (!isNumber(num1)) {
+                alert('Это не число, снова повторите попытку');
+                return ansverNum();
+            }
 
-        let num = parseInt(num1);
-
-        if (num < num0) {
-            alert('Число меньше загаданного');
-            return guessTheNumber();
-            // return
+            let num = parseInt(num1);
+            
+            if (num < secretNum) {
+                alert('Число меньше загаданного');
+                return ansverNum();
+                // return
+            }
+            if (num > secretNum) {
+                alert('Число больше загаданного');
+                return ansverNum();;
+                // return
+            }
+            if (num === secretNum) {
+                alert('Вы угадали, это число: ' + secretNum);
+                return
+            }
+        } else {
+            alert('Конец');
         }
-        if (num > num0) {
-            alert('Число больше загаданного');
-            return guessTheNumber();;
-            // return
-        }
-        if (num === num0) {
-            alert('Вы угадали, это число: ' + num0);
-            // return
-        }
-    } else {
-        alert('Конец');
     }
+    ansverNum()
+    
 }
-guessTheNumber(52);
-
-// let checkLiv = function () {
-//     liv--;
-//     console.log('liv: ', liv);
-// }
-
-// let endGame = function () {
-//     alert('Игра окончена')
-// }
-
-// endGame();
-// checkLiv();
-
-
-// let a = prompt('вопрос');
-// if (a) {
-//     console.log('Да');
-// } else {
-//     console.log('нет');
-// }
+guessTheNumber();
