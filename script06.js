@@ -44,7 +44,6 @@ function guessTheNumber() {
             alert('Конец');
         }
     }
-    ansverNum()
-    
+    ansverNum()    
 }
 guessTheNumber();
